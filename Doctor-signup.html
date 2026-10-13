@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Sign Up — MediConnect AI</title>
+  <link rel="stylesheet" href="design-system.css">
+  <style>
+    .auth-section { display: flex; gap: var(--space-7); max-width: 1100px; margin: 0 auto; padding: var(--space-7) var(--space-5); flex-wrap: wrap; }
+    .auth-left { flex: 1 1 380px; }
+    .auth-left p.eyebrow { color: var(--color-teal-600); font-weight: 600; }
+    .auth-left h1 { margin-top: var(--space-2); }
+    .auth-left p.desc { margin-top: var(--space-3); max-width: 400px; }
+    .auth-left img { max-width: 100%; margin-top: var(--space-5); border-radius: var(--radius-md); }
+    .verify-list { margin-top: var(--space-5); }
+    .verify-item { display: flex; gap: var(--space-2); align-items: flex-start; margin-bottom: var(--space-3); }
+    .verify-item .dot { color: var(--color-teal-600); margin-top: 3px; }
+    .auth-right { flex: 1 1 420px; }
+    .auth-card { max-width: 460px; }
+
+    .file-upload { border: 1.5px dashed var(--color-border); border-radius: var(--radius-sm); padding: var(--space-3); display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); }
+    .file-upload .file-icon { color: var(--color-danger); font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="app-header">
+    <div class="logo"><span class="logo-badge">+</span> MediConnect <span class="accent">AI</span></div>
+    <nav class="flex items-center gap-4" style="font-size:var(--text-sm); font-weight:600; color:var(--color-navy-900);">
+      <a href="index.html">Home</a>
+      <a href="/how-it-works">How It Works</a>
+      <a href="/find-doctor">Find Doctor</a>
+      <a href="/ai-assistant">AI Assistant</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <!-- Is page pe already Signup flow mein hain, isliye sirf Login button -->
+      <a class="btn btn-outline btn-sm" href="login.html">Login</a>
+    </div>
+  </div>
+
+  <div class="auth-section">
+    <div class="auth-left">
+      <p class="eyebrow">Join as a Doctor</p>
+      <h1>Create Your <span style="color:var(--color-teal-600);">Doctor</span> Account</h1>
+      <p class="desc">Join MediConnect AI and grow your healthcare practice.</p>
+      <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=420&h=320&fit=crop" alt="Doctor portrait">
+      <!-- TODO: original image final submission ke liye -->
+
+      <div class="verify-list">
+        <div class="verify-item"><span class="dot">🛡</span> <span class="text-sm">Verification &amp; Security</span></div>
+        <div class="verify-item"><span class="dot">•</span> <span class="text-sm">Your profile will be live only after verification.</span></div>
+        <div class="verify-item"><span class="dot">•</span> <span class="text-sm">We verify your PMDC license and documents to ensure authenticity and prevent fake profiles.</span></div>
+        <div class="verify-item"><span class="dot">•</span> <span class="text-sm">Your data is safe and secure with us.</span></div>
+      </div>
+    </div>
+
+    <div class="auth-right">
+      <div class="card auth-card">
+        <h2 class="mb-4">Doctor Sign Up</h2>
+
+        <div class="field">
+          <label class="field-label">Full Name <span class="required">*</span></label>
+          <input class="input" type="text" placeholder="Enter your full name">
+        </div>
+
+        <div class="field">
+          <label class="field-label">Father's Name <span class="required">*</span></label>
+          <input class="input" type="text" placeholder="Enter your father's name">
+        </div>
+
+        <div class="field">
+          <label class="field-label">CNIC <span class="required">*</span></label>
+          <input class="input" type="text" placeholder="Enter your CNIC number">
+        </div>
+
+        <div class="field">
+          <label class="field-label">Mobile Number <span class="required">*</span></label>
+          <input class="input" type="tel" placeholder="Enter your mobile number">
+        </div>
+
+        <div class="field">
+          <label class="field-label">Email <span class="required">*</span></label>
+          <input class="input" type="email" placeholder="Enter your email">
+        </div>
+
+        <div class="field">
+          <label class="field-label">PMDC Registration Number <span class="required">*</span></label>
+          <input class="input" type="text" placeholder="Enter your PMDC registration number">
+        </div>
+
+        <div class="field">
+          <label class="field-label">CNIC Card (PDF) <span class="required">*</span></label>
+          <div class="file-upload">
+            <span class="file-icon">📄</span>
+            <div>
+              <a href="#">Upload CNIC Card (PDF)</a>
+              <div class="field-hint">PDF (Max 5MB)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">PMDC License (PDF) <span class="required">*</span></label>
+          <div class="file-upload">
+            <span class="file-icon">📄</span>
+            <div>
+              <a href="#">Upload PMDC License (PDF)</a>
+              <div class="field-hint">PDF (Max 5MB)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Medical Degree Certificate (PDF) <span class="required">*</span></label>
+          <div class="file-upload">
+            <span class="file-icon">📄</span>
+            <div>
+              <a href="#">Upload Medical Degree Certificate (PDF)</a>
+              <div class="field-hint">PDF (Max 5MB)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Experience Certificate / Hospital Affiliation Letter (PDF) <span class="required">*</span></label>
+          <div class="file-upload">
+            <span class="file-icon">📄</span>
+            <div>
+              <a href="#">Upload Experience Certificate / Affiliation Letter (PDF)</a>
+              <div class="field-hint">PDF (Max 5MB)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Password <span class="required">*</span></label>
+          <input class="input" type="password" placeholder="Enter your password">
+        </div>
+
+        <div class="field">
+          <label class="field-label">Confirm Password <span class="required">*</span></label>
+          <input class="input" type="password" placeholder="Confirm your password">
+        </div>
+
+        <div class="field">
+          <label class="checkbox-row"><input type="checkbox"> I agree to the Terms &amp; Conditions and Privacy Policy.</label>
+        </div>
+
+        <!-- Sign Up submit ke baad ye "verification-pending.html" pe le jani chahiye (README/prototype flow) -->
+        <a class="btn btn-primary" style="width:100%; text-align:center;" href="verification-pending.html">Sign Up</a>
+
+        <p class="text-sm mt-3" style="text-align:center;">
+          Already have an account? <a href="login.html">Login here</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+    <!-- FOOTER — dynamically loaded from partials/footer.html so it stays
+       identical everywhere; edit sirf ek jagah (partials/footer.html) -->
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('partials/footer.html')
+      .then(res => res.text())
+      .then(html => { document.getElementById('footer-placeholder').innerHTML = html; })
+      .catch(err => console.error('Footer load failed:', err));
+  </script>
+
+</body>
+</html>

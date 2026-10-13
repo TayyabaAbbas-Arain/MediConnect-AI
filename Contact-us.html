@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — MediConnect AI</title>
+  <link rel="stylesheet" href="design-system.css">
+  <style>
+    .auth-section { display: flex; gap: var(--space-7); max-width: 1000px; margin: 0 auto; padding: var(--space-7) var(--space-5); flex-wrap: wrap; }
+    .auth-left { flex: 1 1 320px; }
+    .auth-left img { max-width: 100%; margin-top: var(--space-5); }
+    .auth-right { flex: 1 1 420px; }
+    .role-radio { display: flex; gap: var(--space-5); }
+    .role-radio label { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); font-weight: 600; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER — simplified (jaisa is page pe hai: AI Assistant label + sirf Login) -->
+  <div class="app-header">
+    <div class="logo"><span class="logo-badge">+</span> MediConnect <span class="accent">AI</span></div>
+    <nav class="text-sm" style="font-weight:600; color:var(--color-navy-900);">AI Assistant</nav>
+    <a class="btn btn-primary btn-sm" href="login.html">👤 Login</a>
+  </div>
+
+  <div class="auth-section">
+    <div class="auth-left">
+      <h1>We're Here to Help!</h1>
+      <p class="mt-3">Have a question, feedback, or need assistance? Fill out the form and our team will get back to you soon.</p>
+      <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=380&h=340&fit=crop" alt="Doctor illustration">
+      <!-- TODO: original illustration final submission ke liye -->
+    </div>
+
+    <div class="auth-right">
+      <div class="card">
+        <h2 class="mb-1">Contact Us</h2>
+        <p class="text-sm mb-4">Please fill in your details below and select your role. We will reach out to you shortly.</p>
+
+        <div class="field">
+          <label class="field-label">Full Name</label>
+          <div class="input-wrap">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <input class="input" type="text" placeholder="Enter your full name">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Email Address</label>
+          <div class="input-wrap">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+            <input class="input" type="email" placeholder="Enter your email address">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Subject</label>
+          <input class="input" type="text" placeholder="Enter subject">
+        </div>
+
+        <div class="field">
+          <label class="field-label">You are a</label>
+          <div class="role-radio">
+            <label><input type="radio" name="role" checked> Patient</label>
+            <label><input type="radio" name="role"> Doctor</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label">Message</label>
+          <textarea class="input" rows="4" placeholder="Write your message here..."></textarea>
+        </div>
+
+        <button class="btn btn-primary" style="width:100%;">Send Message</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('partials/footer.html')
+      .then(res => {
+        if (!res.ok) throw new Error('Footer file not found at: ' + res.url);
+        return res.text();
+      })
+      .then(html => { document.getElementById('footer-placeholder').innerHTML = html; })
+      .catch(err => console.error('Footer load failed:', err));
+  </script>
+
+</body>
+</html>

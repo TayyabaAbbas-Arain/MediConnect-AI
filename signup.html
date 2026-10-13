@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up — MediConnect AI</title>
+  <link rel="stylesheet" href="design-system.css">
+  <style>
+    .signup-hero { text-align: center; max-width: 700px; margin: 0 auto; padding: var(--space-7) var(--space-5) var(--space-5); }
+    .signup-hero img { max-width: 320px; margin: var(--space-5) auto; display: block; border-radius: var(--radius-md); }
+
+    .role-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-5); max-width: 700px; margin: 0 auto; padding: 0 var(--space-5); }
+    .role-card { text-align: center; }
+    .role-icon { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--color-border); display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-3); font-size: 1.5rem; }
+    .role-card.patient .role-icon { border-color: var(--color-navy-900); color: var(--color-navy-900); }
+    .role-card.doctor .role-icon { border-color: var(--color-success); color: var(--color-success); }
+    .role-card p { min-height: 42px; }
+
+    .why-section { max-width: 1100px; margin: 0 auto; padding: var(--space-7) var(--space-5); }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); text-align: center; }
+    .why-icon { width: 44px; height: 44px; border-radius: 50%; margin: 0 auto var(--space-2); display: flex; align-items: center; justify-content: center; color: #fff; }
+    @media (max-width: 700px) { .role-grid, .why-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER (copy-paste from partials/header-public.html — abhi is page pe Login already logged-out state hai) -->
+  <div class="app-header">
+    <div class="logo"><span class="logo-badge">+</span> MediConnect <span class="accent">AI</span></div>
+    <nav class="flex items-center gap-4" style="font-size:var(--text-sm); font-weight:600; color:var(--color-navy-900);">
+      <a href="index.html">Home</a>
+      <a href="/how-it-works">How It Works</a>
+      <a href="/find-doctor">Find Doctor</a>
+      <a href="/ai-assistant">AI Assistant</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <!-- Is page pe already Signup hain, isliye sirf Login button -->
+      <a class="btn btn-outline btn-sm" href="login.html">Login</a>
+    </div>
+  </div>
+
+  <!-- ============ INTRO ============ -->
+  <div class="signup-hero">
+    <h1>Create Your Account</h1>
+    <p class="mt-3">Join MediConnect AI and access smarter healthcare solutions. Choose how you want to continue.</p>
+    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=320&h=240&fit=crop" alt="Doctor consulting patient">
+    <!-- TODO: original illustration final submission ke liye lagani hai -->
+  </div>
+
+  <!-- ============ JOIN AS ============ -->
+  <h2 class="mb-4" style="text-align:center;">Join as</h2>
+  <div class="role-grid mb-5">
+    <div class="card role-card patient">
+      <div class="role-icon">👤</div>
+      <div class="card-title">Join as a Patient</div>
+      <p class="card-subtext mt-2">Book appointments, manage health records and connect with trusted doctors.</p>
+      <a class="btn btn-primary mt-4" style="width:100%;" href="patient-signup.html">Continue as Patient →</a>
+    </div>
+    <div class="card role-card doctor">
+      <div class="role-icon">🩺</div>
+      <div class="card-title">Join as a Doctor</div>
+      <p class="card-subtext mt-2">Manage your patients, appointments and grow your healthcare practice.</p>
+      <a class="btn btn-secondary mt-4" style="width:100%;" href="doctor-signup.html">Continue as Doctor →</a>
+      <!-- ⚠️ prototype mein ye button GREEN hai, lekin design-system mein green
+           button class defined nahi (sirf navy/gold/teal). Shakir se confirm
+           karo — abhi ke liye btn-secondary (teal) use kiya taake koi naya
+           hex hardcode na karna pade. -->
+    </div>
+  </div>
+
+  <p class="text-sm mb-6" style="text-align:center;">
+    Already have an account? <a href="login.html">Login here</a>
+  </p>
+
+  <!-- ============ WHY JOIN ============ -->
+  <div class="why-section">
+    <h2 class="mb-4" style="text-align:center;">Why Join MediConnect AI?</h2>
+    <div class="why-grid">
+      <div>
+        <div class="why-icon" style="background:var(--color-navy-900);">👤</div>
+        <div class="card-title" style="font-size:var(--text-base);">Personalized Experience</div>
+        <p class="text-sm mt-1">Manage your profile and appointments easily.</p>
+      </div>
+      <div>
+        <div class="why-icon" style="background:var(--color-success);">🛡</div>
+        <div class="card-title" style="font-size:var(--text-base);">Secure &amp; Safe</div>
+        <p class="text-sm mt-1">Your data is protected with advanced security.</p>
+      </div>
+      <div>
+        <div class="why-icon" style="background:var(--color-warning);">⏱</div>
+        <div class="card-title" style="font-size:var(--text-base);">Quick Booking</div>
+        <p class="text-sm mt-1">Book appointments with just a few clicks.</p>
+      </div>
+      <div>
+        <div class="why-icon" style="background:var(--color-gold-500);">📄</div>
+        <div class="card-title" style="font-size:var(--text-base);">Health Records</div>
+        <p class="text-sm mt-1">Access your medical history and reports anytime.</p>
+      </div>
+    </div>
+  </div>
+
+    <!-- FOOTER — dynamically loaded from partials/footer.html so it stays
+       identical everywhere; edit sirf ek jagah (partials/footer.html) -->
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('partials/footer.html')
+      .then(res => res.text())
+      .then(html => { document.getElementById('footer-placeholder').innerHTML = html; })
+      .catch(err => console.error('Footer load failed:', err));
+  </script>
+
+</body>
+</html>

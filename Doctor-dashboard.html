@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Dashboard — MediConnect AI</title>
+  <link rel="stylesheet" href="design-system.css">
+  <style>
+    .dashboard-shell { display: flex; align-items: flex-start; }
+    .main-content { flex: 1; padding: var(--space-6); }
+
+    .welcome-card { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-5); }
+    .welcome-card .icon-circle { width: 80px; height: 80px; border-radius: 50%; background: var(--color-teal-50); display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin-bottom: var(--space-5); }
+    .stat-card .stat-icon { font-size: 1.4rem; float: right; }
+
+    .row-2 { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-4); margin-bottom: var(--space-5); }
+
+    .report-item { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3); }
+    .report-item .r-icon { width: 36px; height: 36px; border-radius: var(--radius-sm); background: var(--color-bg); display: flex; align-items: center; justify-content: center; }
+
+    .feedback-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+    .feedback-card .avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--color-teal-50); color: var(--color-teal-600); display: flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: var(--space-2); }
+
+    @media (max-width: 900px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .row-2, .feedback-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER — logged-in state -->
+  <div class="app-header">
+    <div class="logo"><span class="logo-badge">+</span> MediConnect <span class="accent">AI</span></div>
+    <div class="flex items-center gap-4">
+      <span style="font-size:1.2rem; cursor:pointer;">🔔</span>
+      <div class="flex items-center gap-2" style="cursor:pointer; font-weight:600; color:var(--color-navy-900);">
+        <span>👤</span> Doctor Name <span style="font-size:0.7rem;">▾</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-shell">
+    <!-- SIDEBAR — sidebar-doctor.html partial jo humein di gayi thi woh incomplete thi
+         (sirf 1 menu item "Open Complaints"). Prototype dekh kar poori sidebar banayi hai.
+         ⚠️ Shakir se confirm kar lena ke ye 8 items hi doctor sidebar mein sahi hain. -->
+    <div class="app-sidebar">
+      <div class="menu-label">MAIN MENU</div>
+      <div class="menu-item active">🏠 Dashboard</div>
+      <a href="schedule-manager.html" style="text-decoration:none;"><div class="menu-item">📅 Schedule Manager</div></a>
+      <a href="doctor-appointments.html" style="text-decoration:none;"><div class="menu-item">📋 Appointments</div></a>
+      <a href="patients-queue.html" style="text-decoration:none;"><div class="menu-item">👥 Patients / Queue</div></a>
+      <a href="doctor-reports.html" style="text-decoration:none;"><div class="menu-item">📄 Reports</div></a>
+      <a href="ai-assistant.html" style="text-decoration:none;"><div class="menu-item">🤖 AI Assistant</div></a>
+      <a href="patient-feedback.html" style="text-decoration:none;"><div class="menu-item">💬 Patient Feedback</div></a>
+      <a href="doctor-profile.html" style="text-decoration:none;"><div class="menu-item">⚙️ Account Settings</div></a>
+      <a href="index.html" style="text-decoration:none;"><div class="menu-item mt-5">🔴 Logout</div></a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+      <!-- Welcome banner -->
+      <div class="card welcome-card">
+        <div>
+          <h2>Welcome, <span style="color:var(--color-teal-600);">Doctor Name!</span></h2>
+          <p class="mt-2">Here's your practice overview. Stay organized and keep caring!</p>
+        </div>
+        <div class="icon-circle">🩺</div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="card stat-card">
+          <div class="stat-value">28</div>
+          <div class="stat-label">Total Appointments</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-value">10</div>
+          <div class="stat-label">Today's Appointments</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-value" style="color:var(--color-warning);">6</div>
+          <div class="stat-label">Pending Appointments</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-value">152</div>
+          <div class="stat-label">Patients</div>
+        </div>
+      </div>
+
+      <!-- Reports + AI Assistant -->
+      <div class="row-2">
+        <div class="card">
+          <div class="flex justify-between items-center mb-3">
+            <div class="card-title">Recent Patient Reports</div>
+            <a href="doctor-reports.html" class="text-sm">View All Reports →</a>
+          </div>
+          <div class="report-item">
+            <div class="r-icon">📄</div>
+            <div><b class="text-sm">Ali Raza</b> — Blood Report<div class="text-sm text-muted">Uploaded on 22 Oct 2024</div></div>
+          </div>
+          <div class="report-item">
+            <div class="r-icon">📄</div>
+            <div><b class="text-sm">Sara Khan</b> — X-Ray<div class="text-sm text-muted">Uploaded on 21 Oct 2024</div></div>
+          </div>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-title mb-2">🤖 AI Assistant</div>
+          <p class="text-sm">Ask me anything about your patients, reports or medical info.</p>
+          <a class="btn btn-outline btn-sm mt-3" href="ai-assistant.html">Ask AI Assistant →</a>
+        </div>
+      </div>
+
+      <!-- Patient Feedback -->
+      <div class="card">
+        <div class="card-title mb-3">Patient Feedback</div>
+        <div class="feedback-grid">
+          <div class="feedback-card">
+            <div class="avatar">FN</div>
+            <b class="text-sm">Fatima Noor</b>
+            <div style="color:var(--color-gold-500);">★★★★★</div>
+            <p class="text-sm text-muted mt-1">Very professional and friendly doctor. Highly recommended!</p>
+          </div>
+          <div class="feedback-card">
+            <div class="avatar">AJ</div>
+            <b class="text-sm">Ahmed Javed</b>
+            <div style="color:var(--color-gold-500);">★★★★★</div>
+            <p class="text-sm text-muted mt-1">Excellent treatment and great experience. Thank you!</p>
+          </div>
+          <div class="feedback-card">
+            <div class="avatar">SK</div>
+            <b class="text-sm">Sara Khan</b>
+            <div style="color:var(--color-gold-500);">★★★★★</div>
+            <p class="text-sm text-muted mt-1">Very kind and listens to patients carefully.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER — dynamically loaded from partials/footer.html so it stays
+       identical everywhere; edit sirf ek jagah (partials/footer.html) -->
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('partials/footer.html')
+      .then(res => {
+        if (!res.ok) throw new Error('Footer file not found at: ' + res.url);
+        return res.text();
+      })
+      .then(html => { document.getElementById('footer-placeholder').innerHTML = html; })
+      .catch(err => console.error('Footer load failed:', err));
+  </script>
+
+</body>
+</html>

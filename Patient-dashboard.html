@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Dashboard — MediConnect AI</title>
+  <link rel="stylesheet" href="design-system.css">
+  <style>
+    /* Dashboard shell: sidebar + main content side by side */
+    .dashboard-shell { display: flex; align-items: flex-start; }
+    .main-content { flex: 1; padding: var(--space-6); }
+
+    .welcome-card { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-5); }
+    .welcome-card .icon-circle { width: 80px; height: 80px; border-radius: 50%; background: var(--color-teal-50); display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-5); }
+    .feature-card .feature-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-3); font-size: 1.2rem; color: #fff; }
+
+    .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-5); }
+
+    .vitals-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+    .vital-item { display: flex; align-items: center; gap: var(--space-2); }
+    .vital-item .v-icon { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.9rem; }
+
+    .tip-item { display: flex; gap: var(--space-2); margin-bottom: var(--space-3); font-size: var(--text-sm); }
+
+    .empty-state { text-align: center; padding: var(--space-5) 0; color: var(--color-text-400); }
+
+    @media (max-width: 900px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      .row-2, .vitals-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER — logged-in state: sirf logo + notification + profile dropdown (README: "sirf logged-in state mein header ke right-side buttons change honge") -->
+  <div class="app-header">
+    <div class="logo"><span class="logo-badge">+</span> MediConnect <span class="accent">AI</span></div>
+    <div class="flex items-center gap-4">
+      <span style="font-size:1.2rem; cursor:pointer;">🔔</span>
+      <div class="flex items-center gap-2" style="cursor:pointer; font-weight:600; color:var(--color-navy-900);">
+        <span>👤</span> Patient <span style="font-size:0.7rem;">▾</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-shell">
+    <!-- SIDEBAR (copy-paste from partials/sidebar-patient.html) -->
+    <div class="app-sidebar">
+      <div class="menu-label">MAIN MENU</div>
+      <div class="menu-item active">🏠 Dashboard</div>
+      <a href="appointments.html" style="text-decoration:none;"><div class="menu-item">📅 My Appointments</div></a>
+      <a href="find-doctor.html" style="text-decoration:none;"><div class="menu-item">🔍 Find Doctor</div></a>
+      <a href="ai-assistant.html" style="text-decoration:none;"><div class="menu-item">🤖 AI Assistant</div></a>
+      <a href="my-reports.html" style="text-decoration:none;"><div class="menu-item">📄 My Reports</div></a>
+      <a href="help-support.html" style="text-decoration:none;"><div class="menu-item">❓ Help &amp; Support</div></a>
+      <a href="index.html" style="text-decoration:none;"><div class="menu-item mt-5">🔴 Logout</div></a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+      <!-- Welcome banner -->
+      <div class="card welcome-card">
+        <div>
+          <h2>Welcome, <span style="color:var(--color-teal-600);">Patient Name</span></h2>
+          <p class="mt-2">Here's your health overview. Stay healthy and connected!</p>
+        </div>
+        <div class="icon-circle">🩺</div>
+      </div>
+
+      <!-- Feature cards -->
+      <div class="feature-grid">
+        <div class="card feature-card">
+          <div class="feature-icon" style="background:var(--color-success);">📊</div>
+          <div class="card-title">BMI Calculator</div>
+          <p class="card-subtext mt-1">Check your Body Mass Index and know your health status.</p>
+          <a class="btn btn-outline btn-sm mt-3" href="bmi-calculator.html">Calculate BMI →</a>
+        </div>
+        <div class="card feature-card">
+          <div class="feature-icon" style="background:var(--color-navy-900);">🔍</div>
+          <div class="card-title">Find Doctor</div>
+          <p class="card-subtext mt-1">Search and connect with trusted doctors near you.</p>
+          <a class="btn btn-outline btn-sm mt-3" href="find-doctor.html">Find Doctor →</a>
+        </div>
+        <div class="card feature-card">
+          <div class="feature-icon" style="background:var(--color-teal-600);">🤖</div>
+          <div class="card-title">AI Assistant</div>
+          <p class="card-subtext mt-1">Get instant answers to your health questions.</p>
+          <a class="btn btn-outline btn-sm mt-3" href="ai-assistant.html">Ask AI Assistant →</a>
+        </div>
+      </div>
+
+      <!-- Vitals + Tips -->
+      <div class="row-2">
+        <div class="card">
+          <div class="card-title mb-3">Daily Vitals</div>
+          <div class="vitals-grid">
+            <div class="vital-item">
+              <div class="v-icon" style="background:var(--color-danger);">♥</div>
+              <div><div class="text-sm text-muted">Heart Rate</div><b>72 bpm</b></div>
+            </div>
+            <div class="vital-item">
+              <div class="v-icon" style="background:var(--color-warning);">📈</div>
+              <div><div class="text-sm text-muted">Blood Pressure</div><b>120/80 mmHg</b></div>
+            </div>
+            <div class="vital-item">
+              <div class="v-icon" style="background:var(--color-info);">⚖</div>
+              <div><div class="text-sm text-muted">Weight</div><b>70 kg</b></div>
+            </div>
+            <div class="vital-item">
+              <div class="v-icon" style="background:var(--color-gold-500);">🔥</div>
+              <div><div class="text-sm text-muted">Calories</div><b>450 kcal</b></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title mb-3">Wellness Tips</div>
+          <div class="tip-item">💧 <span>Stay Hydrated: Aim for 8 glasses of water.</span></div>
+          <div class="tip-item">🏃 <span>Daily Activity: Incorporate 30 mins of exercise.</span></div>
+          <div class="tip-item">🌙 <span>Prioritize Sleep: Ensure 7-9 hours of quality rest.</span></div>
+        </div>
+      </div>
+
+      <!-- Appointments + Reports -->
+      <div class="row-2">
+        <div class="card">
+          <div class="card-title mb-3">📅 Upcoming Appointments</div>
+          <div class="empty-state">No upcoming appointments at the moment.</div>
+        </div>
+        <div class="card">
+          <div class="card-title mb-3">📄 Recent Reports</div>
+          <div class="empty-state">No recent reports available at the moment.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+    <!-- FOOTER — dynamically loaded from partials/footer.html so it stays
+       identical everywhere; edit sirf ek jagah (partials/footer.html) -->
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('partials/footer.html')
+      .then(res => res.text())
+      .then(html => { document.getElementById('footer-placeholder').innerHTML = html; })
+      .catch(err => console.error('Footer load failed:', err));
+  </script>
+
+</body>
+</html>

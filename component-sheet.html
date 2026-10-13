@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediConnect AI</title>
+  <link rel="stylesheet" href="design-system.css">
+
+  <!--
+    Home page ke liye kuch layout rules jo design-system.css mein
+    generic components (buttons/cards) ke ilawa nahi milenge — jaise
+    hero grid, section spacing, doctor-card grid. Ye page-specific CSS
+    hai, README ki rule#3 follow karte hue: design tokens (var(--...))
+    hi use kiye hain, naya color/hex hardcode nahi kiya.
+  -->
+  <style>
+    .section { padding: var(--space-7) var(--space-5); max-width: 1200px; margin: 0 auto; }
+    .section-heading { text-align: center; margin-bottom: var(--space-6); }
+    .section-heading p { color: var(--color-text-600); }
+
+    /* ---- HERO ---- */
+    .hero { display: flex; align-items: center; gap: var(--space-6); flex-wrap: wrap; }
+    .hero-text { flex: 1 1 420px; }
+    .hero-text h1 { font-size: 2.5rem; line-height: 1.15; }
+    .hero-text h1 .accent { color: var(--color-teal-600); }
+    .hero-text p { color: var(--color-text-600); margin: var(--space-4) 0; max-width: 480px; }
+    .hero-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+    .hero-image { flex: 1 1 320px; text-align: center; }
+    .hero-image img { max-width: 100%; border-radius: var(--radius-md); }
+
+    /* ---- HOW IT WORKS ---- */
+    /* Prototype mein 3 alag colors (blue/green/purple) hain, lekin design-system
+       tokens mein sirf navy/gold/teal/status-colors defined hain — koi naya
+       hex/color nahi banaya (README rule #3 aur #6). Isliye teen defined
+       tokens use kiye: teal (secondary accent), success (status green),
+       gold (accent). Agar Shakir purple/blue chahte hain, pehle unse
+       naya token confirm karke design-system.css mein add karwana hoga. */
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+    .step-card { text-align: center; }
+    .step-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-3); color: #fff; font-weight: 700; }
+    .step-icon.c1 { background: var(--color-teal-600); }
+    .step-icon.c2 { background: var(--color-success); }
+    .step-icon.c3 { background: var(--color-gold-500); }
+
+    /* ---- SEARCH BAR ---- */
+    .search-bar { display: flex; gap: var(--space-3); flex-wrap: wrap; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-4); }
+    .search-bar select { flex: 1 1 180px; }
+
+    /* ---- DOCTORS GRID ---- */
+    .doctors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+    .doctor-card { text-align: center; padding: var(--space-4); }
+    .doctor-card img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; margin-bottom: var(--space-2); }
+    .doctor-card .doctor-actions { display: flex; gap: var(--space-2); margin-top: var(--space-3); }
+
+    /* ---- TESTIMONIALS ---- */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+
+    @media (max-width: 900px) {
+      .steps-grid, .doctors-grid, .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .steps-grid, .doctors-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER (copy-paste from partials/header-public.html — DO NOT redesign) ============ -->
+  <div class="app-header">
+    <div class="logo"><span class="logo-badge">+</span> MediConnect <span class="accent">AI</span></div>
+    <nav class="flex items-center gap-4" style="font-size:var(--text-sm); font-weight:600; color:var(--color-navy-900);">
+      <a href="/">Home</a>
+      <a href="/how-it-works">How It Works</a>
+      <a href="/find-doctor">Find Doctor</a>
+      <a href="/ai-assistant">AI Assistant</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <button class="btn btn-outline btn-sm">Login</button>
+      <button class="btn btn-accent btn-sm">Signup</button>
+    </div>
+  </div>
+
+  <!-- ============ HERO SECTION ============ -->
+  <section class="section hero">
+    <div class="hero-text">
+      <!-- ⚠️ tag/badge style yahan "badge" class ho sakti hai — component-sheet.html mein check karo -->
+      <p>♥ Your Health, Our Priority</p>
+      <h1>Smart Healthcare <span class="accent">Starts Here</span></h1>
+      <p>
+        MediConnect AI helps you find the right doctors across Pakistan with the
+        power of AI. Easy search, verified doctors and fast appointment booking —
+        all in one place.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary">👨‍⚕️ Join as Doctor</button>
+        <button class="btn btn-primary">🧑 Join as Patient</button>
+        <button class="btn btn-outline">▶ Watch Video</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <!-- TODO: original photo replace karo placeholder ki jagah (task brief rule #2) -->
+      <div style="position:relative; display:inline-block;">
+        <img src="https://via.placeholder.com/480x360?text=Doctor+Image" alt="Doctor using tablet">
+        <!-- Decorative badges jaise prototype mein hain — position abhi approx hai,
+             image final aane ke baad thoda adjust karna padega -->
+        <div style="position:absolute; top:-10px; left:40%; width:56px; height:56px; border-radius:50%; background:var(--color-navy-900); display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.5rem;">✚</div>
+        <div class="card" style="position:absolute; bottom:60px; left:-20px; padding:var(--space-2) var(--space-3); display:flex; align-items:center; gap:6px;">
+          <span style="color:#e63946;">♥</span>
+          <span class="text-sm" style="font-weight:600;">Better Care<br>Healthier Tomorrow</span>
+        </div>
+        <div class="badge badge-info" style="position:absolute; top:10px; right:-10px;">🤖 AI Powered</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="section">
+    <div class="section-heading">
+      <h2 style="display:flex; align-items:center; gap:var(--space-3); justify-content:center;">
+        <span style="flex:1; max-width:60px; border-top:2px solid var(--color-border);"></span>
+        How It Works
+        <span style="flex:1; max-width:60px; border-top:2px solid var(--color-border);"></span>
+      </h2>
+      <p>Get the best care in just a few simple steps.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-icon c1">1</div>
+        <h4>Search Doctor</h4>
+        <p>Select your region, city and category to find the best doctors near you.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon c2">2</div>
+        <h4>Book Appointment</h4>
+        <p>View doctor profile and choose your convenient time to book appointment.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon c3">3</div>
+        <h4>Get Confirmation</h4>
+        <p>Doctor will confirm your appointment and you will get token number.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SEARCH BAR ============ -->
+  <section class="section">
+    <div class="search-bar">
+      <select><option>📍 Select Region</option></select>
+      <select><option>🏙 Select City</option></select>
+      <select><option>📋 Select Category</option></select>
+      <button class="btn btn-primary">🔍 Search</button>
+    </div>
+  </section>
+
+  <!-- ============ TOP DOCTORS ============ -->
+  <section class="section">
+    <div class="section-heading" style="text-align:left; display:flex; justify-content:space-between; align-items:center;">
+      <h2>Top Doctors</h2>
+      <a href="/find-doctor">View All Doctors →</a>
+    </div>
+    <div class="doctors-grid">
+      <!-- Component-sheet confirmed classes: .card, .card-title, .card-subtext -->
+      <div class="card doctor-card">
+        <img src="https://via.placeholder.com/72" alt="Dr. Ali Raza">
+        <div class="card-title">Dr. Ali Raza</div>
+        <div class="flex items-center gap-2" style="justify-content:center;">
+          <span class="card-subtext">Cardiologist · Karachi</span>
+          <span class="text-sm" style="color:var(--color-gold-500);">★ 4.9</span>
+        </div>
+        <div class="doctor-actions">
+          <button class="btn btn-outline btn-sm">View Profile</button>
+          <button class="btn btn-primary btn-sm">Book Appointment</button>
+        </div>
+      </div>
+      <!-- Baaki 11 doctor cards isi <div class="card doctor-card">...</div> pattern
+           ko copy-paste karke banao — naam/specialty/city PDF prototype se lo:
+           Dr. Sara Khan (Dermatologist), Dr. Usman Ahmed (Neurologist),
+           Dr. Ayesha Malik (Pediatrician), Dr. Hamza Tariq (Orthopedic),
+           Dr. Fatima Noor (Gynecologist), Dr. Bilal Ahmed (ENT Specialist),
+           Dr. Hina Shah (Psychiatrist), Dr. Imran Qureshi (General Physician),
+           Dr. Muneeba Khan (Dentist), Dr. Zain Abbas (Ophthalmologist),
+           Dr. Sana Ullah (Endocrinologist) — sab Karachi hain prototype mein. -->
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="section">
+    <div class="section-heading">
+      <h2>What Our Users Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="card">
+        <div style="color:var(--color-gold-500);">★★★★★</div>
+        <p class="mt-2">"Mediconnect AI made it so easy to find the right doctor. The appointment process is smooth and fast!"</p>
+        <div class="flex items-center gap-3 mt-3">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--color-teal-50);display:flex;align-items:center;justify-content:center;color:var(--color-teal-600);font-weight:700;">A</div>
+          <span class="text-muted text-sm">— Ayesha, Karachi</span>
+        </div>
+      </div>
+      <!-- 2 aur testimonial cards isi pattern se add karo (Bilal - Lahore, Sana - Islamabad) -->
+    </div>
+    <!-- Carousel dots — decorative for now, JS navigation baad mein add karenge -->
+    <div class="flex items-center gap-2 mt-4" style="justify-content:center;">
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--color-navy-900);"></span>
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--color-border);"></span>
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--color-border);"></span>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER (copy-paste from partials/footer.html — DO NOT redesign) ============ -->
+  <div class="app-footer">
+    <div class="flex justify-between" style="flex-wrap:wrap; gap:var(--space-5);">
+      <div>
+        <div class="logo" style="color:#fff;"><span class="logo-badge">+</span> MediConnect AI</div>
+        <p style="color:#8FA0B6; font-size:var(--text-sm); margin-top:var(--space-2); max-width:220px;">
+          Your smart healthcare partner. Find, connect and book trusted doctors across Pakistan.
+        </p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="/">Home</a>
+        <a href="/how-it-works">How It Works</a>
+        <a href="/find-doctor">Find Doctor</a>
+        <a href="/ai-assistant">AI Assistant</a>
+      </div>
+      <div>
+        <h4>For Doctors</h4>
+        <a href="/doctor/signup">Join as Doctor</a>
+        <a href="/doctor/login">Doctor Login</a>
+        <a href="/doctor/dashboard">Doctor Dashboard</a>
+        <a href="/help">Help &amp; Support</a>
+      </div>
+      <div style="min-width:220px;">
+        <h4>Say something about MediConnect AI</h4>
+        <div class="flex gap-2">
+          <input class="input" placeholder="Share your feedback..." style="background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.2); color:#fff;">
+          <button class="btn btn-accent btn-sm">Send</button>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <span>© 2026 MediConnect AI. All rights reserved.</span>
+      <span>Privacy Policy &nbsp;|&nbsp; Terms &amp; Conditions</span>
+    </div>
+  </div>
+
+</body>
+</html>

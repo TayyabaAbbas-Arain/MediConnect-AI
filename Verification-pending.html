@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verification Pending — MediConnect AI</title>
+  <link rel="stylesheet" href="design-system.css">
+  <style>
+    .verify-section { display: flex; gap: var(--space-7); max-width: 1000px; margin: 0 auto; padding: var(--space-7) var(--space-5); flex-wrap: wrap; }
+    .verify-left { flex: 1 1 320px; text-align: center; }
+    .verify-left img { max-width: 260px; margin: var(--space-4) auto; display: block; }
+    .verify-right { flex: 1 1 380px; }
+
+    .doctor-row { display: flex; align-items: center; gap: var(--space-3); margin: var(--space-4) 0; }
+    .doctor-row .avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--color-navy-900); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+
+    .note-item { display: flex; gap: var(--space-3); margin-bottom: var(--space-3); }
+    .note-item .n-icon { color: var(--color-teal-600); font-size: 1.2rem; }
+
+    .help-section { max-width: 700px; margin: 0 auto var(--space-7); padding: 0 var(--space-5); display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; text-align: left; }
+
+    .why-section { max-width: 1100px; margin: 0 auto; padding: 0 var(--space-5) var(--space-7); }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); text-align: center; }
+    .why-icon { font-size: 1.6rem; margin-bottom: var(--space-2); }
+    @media (max-width: 700px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER — simplified, jaisa prototype ke is specific page mein hai:
+       sirf "AI Assistant" label + Login button (koi Signup nahi, poori nav nahi) -->
+  <div class="app-header">
+    <div class="logo"><span class="logo-badge">+</span> MediConnect <span class="accent">AI</span></div>
+    <nav class="text-sm" style="font-weight:600; color:var(--color-navy-900);">AI Assistant</nav>
+    <a class="btn btn-primary btn-sm" href="login.html">👤 Login</a>
+  </div>
+
+  <div class="verify-section">
+    <div class="verify-left">
+      <h1>Thank You!</h1>
+      <p class="mt-2">Your profile has been submitted successfully.</p>
+      <p class="text-sm mt-1" style="color:var(--color-teal-600); font-weight:600;">We are verifying your details.</p>
+      <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=260&h=300&fit=crop" alt="Doctor illustration">
+      <!-- TODO: original illustration final submission ke liye -->
+    </div>
+
+    <div class="verify-right">
+      <h2>Profile Verification Status</h2>
+      <p class="mt-2">We have received your information and documents. Our team is reviewing your profile.</p>
+
+      <div class="card">
+        <div class="doctor-row">
+          <div class="avatar">👤</div>
+          <div>
+            <b>Dr. Ali Khan</b>
+            <div class="text-sm text-muted">dr.alikhan@example.com</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="text-sm" style="font-weight:600;">Status</div>
+          <span class="badge badge-warning mt-1">⏱ PENDING</span>
+          <p class="text-sm mt-2">Your profile is in pending.</p>
+        </div>
+
+        <div class="mb-2" style="font-weight:600;">Note:</div>
+        <div class="note-item">
+          <span class="n-icon">🛡</span>
+          <span class="text-sm">Your profile will be reviewed and verified by our team. After verification, it will be live and visible to patients.</span>
+        </div>
+        <div class="note-item">
+          <span class="n-icon">⏱</span>
+          <span class="text-sm"><b>Expected Approval Time</b><br>Within 24 hours after verification.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Need Help -->
+  <div class="help-section card">
+    <div class="flex items-center gap-3">
+      <span style="font-size:1.6rem;">🎧</span>
+      <div>
+        <b>Need Help?</b>
+        <p class="text-sm mt-1">If you have any questions or need assistance, our support team is here to help you.</p>
+      </div>
+    </div>
+    <a class="btn btn-primary" href="contact-us.html">Contact Us</a>
+  </div>
+
+  <!-- Why MediConnect AI -->
+  <div class="why-section">
+    <h2 class="mb-4" style="text-align:center;">Why MediConnect AI?</h2>
+    <div class="why-grid">
+      <div>
+        <div class="why-icon" style="color:var(--color-success);">🛡</div>
+        <div class="card-title" style="font-size:var(--text-base);">Secure &amp; Safe</div>
+        <p class="text-sm mt-1">Your data is protected with advanced security.</p>
+      </div>
+      <div>
+        <div class="why-icon" style="color:var(--color-warning);">⏱</div>
+        <div class="card-title" style="font-size:var(--text-base);">Quick Booking</div>
+        <p class="text-sm mt-1">Book appointments with just a few clicks.</p>
+      </div>
+      <div>
+        <div class="why-icon" style="color:var(--color-teal-600);">📄</div>
+        <div class="card-title" style="font-size:var(--text-base);">Health Records</div>
+        <p class="text-sm mt-1">Access your medical history and reports anytime.</p>
+      </div>
+      <div>
+        <div class="why-icon" style="color:var(--color-navy-900);">👤</div>
+        <div class="card-title" style="font-size:var(--text-base);">Personalized Experience</div>
+        <p class="text-sm mt-1">Manage your profile and appointments easily.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder"></div>
+  <script>
+    fetch('partials/footer.html')
+      .then(res => {
+        if (!res.ok) throw new Error('Footer file not found at: ' + res.url);
+        return res.text();
+      })
+      .then(html => { document.getElementById('footer-placeholder').innerHTML = html; })
+      .catch(err => console.error('Footer load failed:', err));
+  </script>
+
+</body>
+</html>
